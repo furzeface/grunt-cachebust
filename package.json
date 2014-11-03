@@ -1,7 +1,7 @@
 {
   "name": "grunt-cachebust",
   "version": "0.2.0",
-  "description": "The best Grunt plugin ever.",
+  "description": "Append a timestamp to your assets to bust that cache!",
   "homepage": "https://github.com/furzeface/grunt-cachebust",
   "repository": "https://github.com/furzeface/grunt-cachebust",
   "author": {
@@ -10,7 +10,12 @@
     "url": "http://daniel.furzeface.com"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "cache",
+    "cachebust",
+    "MD5",
+    "timestamp",
+    "assets"
   ],
   "main": "Gruntfile.js",
   "engines": {
