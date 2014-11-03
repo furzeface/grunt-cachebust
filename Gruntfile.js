@@ -54,6 +54,21 @@ module.exports = function (grunt) {
           dest: 'tmp/'
         }
         ]
+      },
+      custom_options: {
+        options: {
+          type: 'timestamp'
+        },
+        files: [
+        {
+          expand: true,
+          cwd: '<%= config.test %>/fixtures',
+          src: [
+          'custom_options.html'
+          ],
+          dest: 'tmp/'
+        }
+        ]
       }
     },
 

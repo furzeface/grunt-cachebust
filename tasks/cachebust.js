@@ -12,13 +12,17 @@
 
   grunt.registerMultiTask('cachebust', 'Append a timestamp to your assets to bust that cache!', function () {
 
-    var $ = require('cheerio');
+    var $ = require('cheerio'),
+    MD5 = require('MD5');
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
+      type: 'MD5'
+    });
 
-    }),
-    timestamp = new Date().getTime();
+    if (options.type === 'timestamp') {
+      var timestamp = new Date().getTime();
+    }
 
     // Iterate over all specified file groups.
     this.files.forEach(function (file) {
@@ -33,19 +37,27 @@
         return grunt.file.read(filepath);
       }).join('');
 
-      var $scripts = $(contents).find('script');
-      var $styles = $(contents).find('link[rel=stylesheet]');
+      var $scripts = $(contents).find('script'),
+      $styles = $(contents).find('link[rel=stylesheet]');
 
       // Loop the stylesheet hrefs
       for (var i = 0; i < $styles.length; i++) {
         var styleHref = $styles[i].attribs.href;
-        contents = contents.replace(styleHref, styleHref + '?t=' + timestamp);
+        if (options.type === 'timestamp') {
+          contents = contents.replace(styleHref, styleHref + '?t=' + timestamp);
+        } else {
+          contents = contents.replace(styleHref, styleHref + '?hash=' + MD5(styleHref));
+        }
       }
 
       // Loop the script srcs
       for (var i = 0; i < $scripts.length; i++) {
         var scriptSrc = $scripts[i].attribs.src;
-        contents = contents.replace(scriptSrc, scriptSrc + '?t=' + timestamp);
+        if (options.type === 'timestamp') {
+          contents = contents.replace(scriptSrc, scriptSrc + '?t=' + timestamp);
+        } else {
+          contents = contents.replace(scriptSrc, scriptSrc + '?hash=' + MD5(scriptSrc));
+        }
       }
 
       // Write the destination file
@@ -54,6 +66,6 @@
       // Print a success message
       grunt.log.writeln('File "' + file.dest + '" busted!');
     });
-  });
+});
 
 };
