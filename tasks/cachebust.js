@@ -46,7 +46,7 @@
         if (options.type === 'timestamp') {
           contents = contents.replace(styleHref, styleHref + '?t=' + timestamp);
         } else {
-          contents = contents.replace(styleHref, styleHref + '?hash=' + MD5(styleHref));
+          contents = contents.replace(styleHref, styleHref + '?hash=' + MD5(contents));
         }
       }
 
@@ -56,7 +56,8 @@
         if (options.type === 'timestamp') {
           contents = contents.replace(scriptSrc, scriptSrc + '?t=' + timestamp);
         } else {
-          contents = contents.replace(scriptSrc, scriptSrc + '?hash=' + MD5(scriptSrc));
+          grunt.log.writeln('lol');
+          contents = contents.replace(scriptSrc, scriptSrc + '?hash=' + MD5(contents));
         }
       }
 

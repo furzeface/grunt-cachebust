@@ -13,7 +13,7 @@ exports.cachebust = {
     var actual = grunt.file.read('tmp/default_options.html'),
     expected = grunt.file.read('test/expected/default_options.html');
 
-    test.notEqual(actual, expected, 'should append an MD5 hash as a query string to CSS and JS file references.');
+    test.equal(actual, expected, 'should append an MD5 hash as a query string to CSS and JS file references.');
 
     test.done();
   },
