@@ -7,7 +7,7 @@ This plugin requires Grunt.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```shell
+```sh
 npm install grunt-cachebust --save-dev
 ```
 
@@ -17,7 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-cachebust');
 ```
 
-## The "cachebust" task
+## The 'cachebust' task
 
 ### Overview
 In your project's Gruntfile, add a section named `cachebust` to the data object passed into `grunt.initConfig()`.
@@ -26,16 +26,24 @@ In your project's Gruntfile, add a section named `cachebust` to the data object 
 grunt.initConfig({
   cachebust: {
     options: {
-      // Task-specific options go here.
+    // Task-specific options go here.
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
+    // Target-specific file lists and/or options go here.
+    }
+  }
+});
 ```
 
 ### Options
+
+#### options.type
+Type: `String`
+Default value: `'MD5'`
+
+A string value that is used denote the type of query string append to asset paths:
+ - `MD5`
+ - `timestamp`
 
 ### Usage Examples
 
@@ -44,8 +52,20 @@ grunt.initConfig({
 ```js
 grunt.initConfig({
   cachebust: {
+    default_options: {
+      files: [
+      {
+        expand: true,
+        cwd: 'dist/',
+        src: [
+          '**/*.html'
+        ],
+        dest: 'dist/'
+      } 
+      ]
+    }
   }
-})
+});
 ```
 
 #### Custom Options
@@ -53,12 +73,23 @@ grunt.initConfig({
 ```js
 grunt.initConfig({
   cachebust: {
-    options: {
-    },
-    files: {
+    custom_options: {
+      options: {
+        type: 'timestamp'
+      },
+      files: [
+        {
+          expand: true,
+          cwd: 'dist',
+          src: [
+            '**/*.html'
+          ],
+          dest: 'dist/'
+        }
+      ]
     }
-  },
-})
+  }
+});
 ```
 
 ## Contributing
