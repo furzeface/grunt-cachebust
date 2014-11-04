@@ -85,6 +85,7 @@ Tips:
 * Versioning adheres to [Semver](http://semver.org).
 
 ## Release History
+- 2014-11-04 v0.3.0 - Hashes MD5 based on file contents.
 - 2014-11-03 v0.2.0 - Adds support for MD5 hashing as default, timestamp optional.
 - 2014-11-03 v0.1.0 - Initial release.
 

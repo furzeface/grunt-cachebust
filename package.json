@@ -1,6 +1,6 @@
 {
   "name": "grunt-cachebust",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Append a timestamp to your assets to bust that cache!",
   "homepage": "https://github.com/furzeface/grunt-cachebust",
   "repository": "https://github.com/furzeface/grunt-cachebust",
