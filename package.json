@@ -1,7 +1,7 @@
 {
   "name": "grunt-cachebust",
-  "version": "0.4.0",
-  "description": "Append a timestamp to your assets to bust that cache!",
+  "version": "1.0.0",
+  "description": "Append a query string to your assets to bust that cache!",
   "homepage": "https://github.com/furzeface/grunt-cachebust",
   "repository": "https://github.com/furzeface/grunt-cachebust",
   "author": {
@@ -23,8 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "MD5": "^1.2.1",
-    "cheerio": "^0.17.0"
+    "cachebust": "^1.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
