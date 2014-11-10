@@ -33,7 +33,7 @@
       // Write the file
       grunt.file.write(file.dest, processedContents);
       // Print a success message
-      grunt.log.writeln('File "' + file.dest + '" busted!');
+      grunt.verbose.writeln('File ' + file.dest + ' busted!');
     });
   });
 };
